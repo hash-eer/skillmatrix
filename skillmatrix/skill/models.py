@@ -3,10 +3,10 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class SkillCatogary(models.Model):
-    categary = models.CharField(max_length=50,null=True, blank=True)
+    category = models.CharField(max_length=50,null=True, blank=True)
     
     def __str__(self):
-        return self.categary
+        return self.category
     
     
 class SkillLevel(models.Model):
@@ -33,12 +33,12 @@ class Skills(models.Model):
     
 
 class Skillmatrix(models.Model):
-    user=models.ForeignKey(User, on_delete=models.CASCADE)
-    skill=models.ForeignKey(Skills, on_delete=models.CASCADE)
-    level=models.ForeignKey(SkillLevel,on_delete=models.CASCADE)
+    user=models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    skill=models.ForeignKey(Skills, on_delete=models.CASCADE, null=True, blank=True)
+    level=models.ForeignKey(SkillLevel,on_delete=models.CASCADE, null=True, blank=True)
     
     def __str__(self):
-        return self.skill.name
+        return f'{self.user}'
     
     
 

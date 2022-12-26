@@ -1,0 +1,8 @@
+<select name="skill" class="custom-select col-md-2" required="" id="id_skill">
+    <option value="" selected="">---------</option>
+    
+  {% for c in skills %}
+    <option value="{{c.id}}">{{c.name}}</option>
+  
+    {% endfor %}
+  </select>

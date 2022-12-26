@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+    <p id="name"></p>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3>Add Skills</h3>
+
+        <div class="container" style="padding:30px;">
+            <h3>Add Technology</h3>
+            
+            {{tech_form.management_data}}
+            {% comment %} {% for form in tech_form %} {% endcomment %}
+
+            {% for hidden in tech_form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            <div class="row">
+                {{tech_form}}
+            </div>
+
+            {% comment %} {% endfor %} {% endcomment %}
+            
+        </div>
+        
+        <div class="container" style="padding:30px;">
+            <h3>Add Framework</h3>
+            
+            {{tech_form.management_data}}
+            {% comment %} {% for form in tech_form %} {% endcomment %}
+
+            {% for hidden in framework_form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            <div class="row">
+                {{framework_form}}
+            </div>
+
+            {% comment %} {% endfor %} {% endcomment %}
+            
+        </div>
+
+        <div class="container" style="padding:30px;">
+            <h3>Add Database</h3>
+            
+            {{db_form.management_data}}
+            {% comment %} {% for form in tech_form %} {% endcomment %}
+
+            {% for hidden in db_form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            <div class="row">
+                {{db_form}}
+            </div>
+
+            {% comment %} {% endfor %} {% endcomment %}
+            
+        </div>
+
+        <div class="container" style="padding:30px;">
+            <h3>Add Operating System</h3>
+            
+            {{os_form.management_data}}
+            {% comment %} {% for form in tech_form %} {% endcomment %}
+
+            {% for hidden in os_form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            <div class="row">
+                {{os_form}}
+            </div>
+
+            {% comment %} {% endfor %} {% endcomment %}
+            
+        </div>
+
+
+        <div class="container" style="padding:30px;">
+            <h3>Add WebApi</h3>
+            
+            {{web_form.management_data}}
+            {% comment %} {% for form in tech_form %} {% endcomment %}
+
+            {% for hidden in web_form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            <div class="row">
+                {{web_form}}
+            </div>
+
+            {% comment %} {% endfor %} {% endcomment %}
+            
+        </div>
+        {% comment %} <div class="container" style="padding:30px;">
+            <h3>Add Framework</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    {{framework_form.f_skill.label}}
+                    {{framework_form.f_skill}}
+                </div>
+                <div class="col-md-4">
+                    {{framework_form.f_level.label}}
+                    {{framework_form.f_level}}
+                </div>
+
+            </div>
+            
+        </div>
+
+        <div class="container" style="padding:30px;">
+            <h3>Add Database</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    {{db_form.d_skill.label}}
+                    {{db_form.d_skill}}
+                </div>
+                <div class="col-md-4">
+                    {{db_form.d_level.label}}
+                    {{db_form.d_level}}
+                </div>
+
+            </div>
+            
+        </div>
+
+        <div class="container" style="padding:30px;">
+            <h3>Add Operating System</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    {{os_form.o_skill.label}}
+                    {{os_form.o_skill}}
+                </div>
+                <div class="col-md-4">
+                    {{os_form.o_level.label}}
+                    {{os_form.o_level}}
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="padding:30px;" >
+            <h3>Add Web Api</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    {{webapi_form.w_skill.label}}
+                    {{webapi_form.w_skill}}
+                </div>
+                <div class="col-md-4">
+                    {{webapi_form.w_level.label}}
+                    {{webapi_form.w_level}}
+                </div>
+
+            </div>
+            
+        </div>  
+        {% endcomment %}
+        
+        <div class="container" style="padding-top: 35px;" >
+            <input name="submit" value="submit" type="submit" class="btn btn-primary" >
+        </div>
+        <form>
+        
+        <script>
+            
+        </script>
+
+        {% endblock content %}
