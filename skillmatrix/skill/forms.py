@@ -31,7 +31,7 @@ class DatabaseForm(Form):
     
 class OSForm(Form):
    
-    o_skill = forms.ModelChoiceField(queryset=Skills.objects.filter(category__category='operating-system'), widget=Select(
+    o_skill = forms.ModelChoiceField(queryset=Skills.objects.filter(category__category='operating system'), widget=Select(
                          attrs={'class': "custom-select col-md-4"}), required=False, label='Skill')
     o_level = forms.ModelChoiceField(required=False, queryset=SkillLevel.objects.all(), widget=Select(
                          attrs={'class': "custom-select col-md-4"}), label='Level')

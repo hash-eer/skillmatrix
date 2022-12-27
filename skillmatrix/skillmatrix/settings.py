@@ -77,8 +77,8 @@ WSGI_APPLICATION = 'skillmatrix.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'skill', 
-        'USER': 'yajnesh', 
+        'NAME': 'skillmatrix', 
+        'USER': 'postgres', 
         'PASSWORD': '1234',
         'HOST': 'localhost', 
         'PORT': '5432',

@@ -22,7 +22,7 @@
 
                     <div id="example_filter" class="dataTables_filter">
                      
-                      <a href="{% url 'add_skill_matrix' %}" class="btn btn-primary float-right">ADD</a>
+                      <a href="{% url 'list' %}" class="btn btn-danger float-right">Clear</a>
                     </div>
                      <form action="" >
 
@@ -55,7 +55,7 @@
                           <tr>
                         <th>Slno</th>
                         <th>name</th>
-                        <th colspan="5" style="text-align:center">Skills</th>
+                        <th style="text-align:center">Skills</th>
                         
                         
                       </tr>
@@ -70,65 +70,16 @@
  
                         <td> 
                           <table>
-                            
-
-                            <tr> <th> Technology Name </th> <th> Technology level </th> </tr>
-                            
-
-                            {% for t in technology  %}
-                            {% if t.user == s.user %}
-                            <tr> <td>{{t.skill.name}} </td><td> {{t.level.level}} </td> </tr>
-                            {% endif %}
-                            {% endfor %}
-                            </table>
-                        </td>
-
-                        <td> 
-                          <table>
-                            <tr> <th> Framework Name </th> <th> Framework level </th> </tr>
-                            {% for f in framework  %}
-                            {% if f.user == s.user %}
-                            <tr> <td> {{f.skill.name}} </td><td> {{f.level.level}} </td> </tr>
-                            {% endif %}
-                            {% endfor %}
-                            </table>
-                        </td>
-
-                        <td> 
-                          <table>
                            
-                            <tr> <th> Database Name </th> <th> Database level </th> </tr>
-                            {% for d in database  %}
-                            {% if d.user == s.user %}
-                            <tr> <td> {{d.skill.name}} </td><td> {{d.level.level}} </td> </tr>
-                            {% endif %}
-                            {% endfor %}
+                            <tr> <th> {{s.skill.category.category}} Name </th> <th>  level </th> </tr>
+                            
+                            <tr> <td>{{s.skill.name}} </td><td> {{s.level.level}} </td> </tr>
+                            
                             </table>
                         </td>
 
-                        <td> 
-                          <table>
-                           
-                            <tr> <th> Operating system Name </th> <th> Operating system level </th> </tr>
-                            {% for o in os  %}
-                            {% if o.user == s.user %}
-                            <tr> <td> {{o.skill.name}} </td><td> {{o.level.level}} </td> </tr>
-                            {% endif %}
-                            {% endfor %}
-                            </table>
-                        </td>
                         
-                        <td> 
-                          <table>
-                           
-                            <tr> <th> WebApi Name </th> <th> webApi level </th> </tr>
-                            {% for w in webapi  %}
-                            {% if w.user == s.user %}
-                            <tr> <td> {{w.skill.name}} </td><td> {{w.level.level}} </td> </tr>
-                            {% endif %}
-                            {% endfor %}
-                            </table>
-                        </td>
+                         
 
                       </tr>
                       
@@ -149,7 +100,7 @@
       <script>
         $(function() {
             $(document).ready(function() {
-              $('#example').DataTable();
+              $('#example')?.DataTable();
             });
     
              $('#example-getting-started').multiselect();

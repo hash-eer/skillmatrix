@@ -19,8 +19,9 @@
                 {{ hidden }}
             {% endfor %}
 
-            <div class="row">
+            <div class="row" id="formset">
                 {{tech_form}}
+                <button id="add-form-button">Add Form</button>
             </div>
 
             {% comment %} {% endfor %} {% endcomment %}
@@ -75,6 +76,7 @@
 
             <div class="row">
                 {{os_form}}
+                
             </div>
 
             {% comment %} {% endfor %} {% endcomment %}
@@ -99,6 +101,13 @@
             {% comment %} {% endfor %} {% endcomment %}
             
         </div>
+
+
+
+
+
+
+        
         {% comment %} <div class="container" style="padding:30px;">
             <h3>Add Framework</h3>
             <div class="row">
@@ -167,8 +176,29 @@
         </div>
         <form>
         
-        <script>
-            
-        </script>
+        
+<script>
+    function addForm() {
+        // Get the formset prefix and the current number of forms
+        var formsetPrefix = document.getElementById("id_form-prefix").value;
+        var totalForms = parseInt(document.getElementById("id_form-TOTAL_FORMS").value);
+      
+        // Create the form element
+        var form = document.createElement("form");
+        form.setAttribute("id", formsetPrefix + "-" + totalForms);
+        form.setAttribute("class", "form-row");
+      
+        // Add form fields and other content here
+      
+        // Append the form to the DOM
+        var formsetElement = document.getElementById("formset");
+        formsetElement.appendChild(form);
+      
+        // Update the TOTAL_FORMS hidden input
+        document.getElementById("id_form-TOTAL_FORMS").value = totalForms + 1;
+      }
+      
+      document.getElementById("add-form-button").addEventListener("click", addForm);
+  </script>
 
         {% endblock content %}

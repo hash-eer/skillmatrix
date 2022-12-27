@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from skill.models import Skillmatrix, Skills,SkillLevel
+from skill.models import Skillmatrix, Skills,SkillLevel,SkillCatogary
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from skill.forms import TechForm,FrameworkForm,DatabaseForm,OSForm,WebApiForm
@@ -14,13 +14,15 @@ def listskill(request):
     
     s = Skills.objects.all()
     l=SkillLevel.objects.all()
+    
     technology=Skillmatrix.objects.filter(skill__category__category="technology")
     framework=Skillmatrix.objects.filter(skill__category__category="framework")
     database=Skillmatrix.objects.filter(skill__category__category="database")
-    os=Skillmatrix.objects.filter(skill__category__category="operating-system")
-    webapi=Skillmatrix.objects.filter(skill__category__category="web-api")
+    os=Skillmatrix.objects.filter(skill__category__category="operating system")
+    webapi=Skillmatrix.objects.filter(skill__category__category="web api")
     
-    print(l)
+    
+   
     if request.GET.get('level') and  request.GET.get('skill'):
         sk = request.GET.get('skill')
         lev= request.GET.get('level')
@@ -30,7 +32,7 @@ def listskill(request):
         
         skills = Skillmatrix.objects.filter(skill=sk,level=lev).order_by('user__username').distinct('user__username')
         data = {'skill':skills, 's':s,'l':l,'technology':technology,'framework':framework,'database':database,'os':os,'webapi':webapi}
-        return render(request, 'list_skill.html', data)
+        return render(request, 'search.html', data)
     
     if request.GET.get('skill'):
         q = request.GET.get('skill')
@@ -38,7 +40,7 @@ def listskill(request):
      
         skills = Skillmatrix.objects.filter(skill=q).order_by('user__username').distinct('user__username')
         data = {'skill':skills, 's':s,'l':l,'technology':technology,'framework':framework,'database':database,'os':os,'webapi':webapi}
-        return render(request, 'list_skill.html', data)
+        return render(request, 'search.html', data)
     
     if request.GET.get('level') and request.GET.get:
         q = request.GET.get('level')
@@ -46,7 +48,7 @@ def listskill(request):
      
         skills = Skillmatrix.objects.filter(level=q).order_by('user__username').distinct('user__username')
         data = {'skill':skills, 's':s,'l':l,'technology':technology,'framework':framework,'database':database,'os':os,'webapi':webapi}
-        return render(request, 'list_skill.html', data)
+        return render(request, 'search.html', data)
     
     
         
@@ -61,19 +63,19 @@ def listskill(request):
 
 
 def add_skill_matrix(request):
-    tech_form_set = formset_factory(TechForm, extra=2)
+    tech_form_set = formset_factory(TechForm)
     tech_form = tech_form_set()
     
-    framework_form_set = formset_factory(FrameworkForm, extra=2)
+    framework_form_set = formset_factory(FrameworkForm, extra=1)
     framework_form = framework_form_set()
     
-    db_form_set = formset_factory(DatabaseForm,extra=2)
+    db_form_set = formset_factory(DatabaseForm,extra=1)
     db_form = db_form_set()
     
-    os_form_set = formset_factory(OSForm,extra=2)
+    os_form_set = formset_factory(OSForm,extra=1)
     os_form = os_form_set()
     
-    web_form_set = formset_factory(WebApiForm,extra=2)
+    web_form_set = formset_factory(WebApiForm,extra=1)
     web_form = web_form_set()
     # os_form = OSForm(request.POST or None)
     # webapi_form = WebApiForm(request.POST or None)
@@ -132,6 +134,9 @@ def add_skill_matrix(request):
     forms = {'tech_form':tech_form,'framework_form':framework_form,'db_form':db_form,'os_form':os_form,'web_form':web_form}
            
     return render(request, 'add_skill.html', forms)
+
+
+
 
         
         
